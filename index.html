@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+     <!-- this is cdn link of bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <!-- attaching the css file  -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- this is flex container whose direction is column and items are aligned at center -->
+    <div class="container"> 
+        <!-- main heading -->
+        <h2>Calculator</h2>
+
+        <!-- this is div using bootstrap card css and with a card-body div in it -->
+        <div class="card" style="width: 20rem;">
+
+            <div class="card-body">
+                <!-- this is main display div of our Calculator -->
+            <div>
+                <input class="cal-display" type="text" value="0">
+            </div>
+            <!-- keyboard div using table layout with four column  -->
+            <div class="cal-keyboard">
+                <table>
+                    <tr>
+                        <td><button class="cal-keys clear" onclick="clear_display()">AC</button></td>
+                        <td><button onclick="operator(this)"class="cal-keys opr">x<sup>2</sup></button></td>
+                        <td><button onclick="operator(this)"class="cal-keys opr">/</button></td>
+                        <td><button onclick="operator(this)"class="cal-keys opr">x</button></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick="get_num(this)" class="cal-keys operand">7</button></td>
+                        <td><button onclick="get_num(this)" class="cal-keys operand">8</button></td>
+                        <td><button onclick="get_num(this)" class="cal-keys operand">9</button></td>
+                        <td><button onclick="operator(this)"class="cal-keys opr">+</button></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick="get_num(this)" class="cal-keys operand">4</button></td>
+                        <td><button onclick="get_num(this)" class="cal-keys operand">5</button></td>
+                        <td><button onclick="get_num(this)" class="cal-keys operand">6</button></td>
+                        <td><button onclick="operator(this)"class="cal-keys opr">-</button></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick="get_num(this)" class="cal-keys operand">1</button></td>
+                        <td><button onclick="get_num(this)" class="cal-keys operand">2</button></td>
+                        <td><button onclick="get_num(this)" class="cal-keys operand">3</button></td>
+                        <td rowspan="2"><button onclick="calculate()" class="cal-keys equal">=</button></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><button onclick="get_num(this)" class="cal-keys oeprand">0</button></td>
+                        <td><button onclick="get_num(this)" class="cal-keys opr">.</button></td>
+                        <td><button onclick="operator(this)"class="cal-keys opr">%</button></td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- this is bootstrap js cdn link as some css required js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- this is js file to calcuate result -->
+    <script src="index.js"></script>
+</body>
+</html>
