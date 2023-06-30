@@ -11,17 +11,18 @@ if(result!=0){
 // clear button for reseting inout box
 function clear_display(){
     input.value="0";
+    equation="";
     result=0;
 }
 
 //adding functionality to the operand button
 function get_num(btn){
     console.log(btn.innerHTML);
-    if(display==="0"){
-        display=btn.innerHTML;
-        input.value=display;
+    if(input.value==="0"){
+        input.value=btn.innerHTML;
     }
     else{
+        display=input.value;
         display+=btn.innerHTML;
         input.value=display;
     }
@@ -29,14 +30,17 @@ function get_num(btn){
 //adding functionality to the operator button
 function operator(btn){
     if(btn.innerHTML=="x"){
+        display=input.value;
         display+="*";
         input.value=display;
     }
     else if(btn.innerHTML=="x<sup>2</sup>"){ // if user click squre button
+        display=input.value;
         display="("+display+")"+"^2";
         input.value=display;
     }
     else{
+        display=input.value;
         display+=btn.innerHTML;
         input.value=display;
     }
@@ -55,11 +59,13 @@ input.addEventListener("keyup", function(event) {
 // if user click the equal btn then calculate function will be trigged and the equation in the input box will 
 // be calculated by eval function and stored in result then replace the value of input by result
 function calculate(){
-    display=input.value;
-    equation=display;
-    equation=equation.replace("^2","**2");
-    var result=eval(equation);
-    display=result;
-    console.log(result);
+    equation=input.value;
+    if(equation.indexOf("^")!=-1){
+        equation=equation.replace("^2","**2");
+    }
+    var result=eval(equation);  
+    if(!result.isInteger){
+        result.toFixed(3);
+    }
     input.value=result;
 }
